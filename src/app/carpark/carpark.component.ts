@@ -8,7 +8,10 @@ import {Router} from '@angular/router';
 })
 export class CarparkComponent implements OnInit {
   carInfo:any;
-  constructor(private http:HttpClient,private router: Router) { }
+  userName:any;
+  constructor(private http:HttpClient,private router: Router) {
+    this.userName=localStorage.getItem("userName");
+   }
 
   ngOnInit() {
      const headerDict = {

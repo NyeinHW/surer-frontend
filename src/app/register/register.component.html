@@ -1,43 +1,32 @@
+<div class="registerContainer card">
+  <h2>Register</h2>
 
-<h2>Register</h2>
-
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-
-  <div>
-    <label for="firstName">
-      First Name
-    </label>
-    <input id="firstName" type="text" formControlName="firstName" required>
-  </div>
-
-  <div>
-    <label for="lastName">
-      LastName
-    </label>
-    <input id="lastName" type="text" formControlName="lastName" required>
-  </div>
-
-  <div>
-    <label for="email">
-      Email
-    </label>
-    <input id="email" type="email" formControlName="email" required>
-  </div>
-
-  <div>
-    <label for="password">
-      Password
-    </label>
-    <input id="password" type="password" formControlName="password" required>
-  </div>
-
-    <div>
-    <label for="number">
-      Contact Number
-    </label>
-    <input id="number" type="number" formControlName="number" >
-  </div>
-
-  <button class="button" type="submit">Register</button>
-
-</form>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <table>
+      <tr>
+        <td>First Name</td>
+        <td><input id="firstName" type="text" formControlName="firstName" required></td>
+      </tr>
+      <tr>
+        <td>LastName</td>
+        <td><input id="lastName" type="text" formControlName="lastName" required></td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td><input id="email" type="email" formControlName="email" required></td>
+      </tr>
+      <tr>
+        <td>Password</td>
+        <td><input id="password" type="password" formControlName="password" required></td>
+      </tr>
+      <tr>
+        <td>Contact Number</td>
+        <td><input id="number" type="number" formControlName="number" ></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><button class="button" type="submit">Register</button></td>
+      </tr>
+    </table>
+  </form>
+</div>
