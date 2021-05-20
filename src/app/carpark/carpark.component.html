@@ -1,0 +1,15 @@
+<p>carpark works!</p>
+<table style="width:100%">
+  <tr>
+    <th>Total Lots</th>
+    <th>CarPark NO</th>
+    <th>Lot Type</th>
+    <th>Lot Available</th>
+  </tr>
+  <tr *ngFor="let info of carInfo">
+    <td>{{info.carpark_info[0].total_lots}}</td>
+    <td>{{info.carpark_number}}</td>
+    <td>{{info.carpark_info[0].lot_type}}</td>
+    <td>{{info.carpark_info[0].lots_available}}</td>
+  </tr>
+</table>
