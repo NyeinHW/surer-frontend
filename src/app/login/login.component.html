@@ -1,9 +1,27 @@
-<div>
+<div class="loginContainer card">
+<h3>Login Form</h3>
   <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      Email:<input type="text" formControlName="email" >
-      Password:<input type="password" formControlName="password">
-      <input type="submit" value="Login">
-      <a routerLink="/register" routerLinkActive="active">Register</a>
+    <table>
+        <tr>
+          <td>Email</td>
+        </tr>
+        <tr>
+          <td><input type="text" formControlName="email" required ></td>
+        </tr>
+        <tr>
+          <td>Password</td>
+        </tr>
+        <tr>
+          <td><input type="password" formControlName="password" required></td>
+        </tr>
+        <tr>
+          <td><input type="submit" value="Login"></td>
+        </tr>
+        <tr></tr>
+        <tr>
+          <td>Not a member? <a routerLink="/register" routerLinkActive="active">Sign Up</a></td>
+        </tr>
+    </table>    
   </form>
 </div>
 

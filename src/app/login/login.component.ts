@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl,Validators } from '@angular/forms';
 import {HttpClient} from '@angular/common/http'
 import {Router} from '@angular/router';
 @Component({
@@ -9,8 +9,8 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
  loginForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
+    email: new FormControl('',[Validators.required]),
+    password: new FormControl('',[Validators.required]),
   });
   constructor(private http:HttpClient,private router: Router) { }
 
@@ -24,9 +24,11 @@ export class LoginComponent implements OnInit {
                     if(data.code== 200){
                        localStorage.setItem('token', data.token);
                        localStorage.setItem('userId',data.user.Id);
+                       localStorage.setItem('userName',data.user.FirstName+''+data.user.LastName);
                         this.router.navigate(['/carpark']);
                     }
                     else{
+                        window.alert("Credentials is not correct");
                          this.router.navigate(['/']);                     
                     }
                     console.warn("result",localStorage.getItem('token'));
