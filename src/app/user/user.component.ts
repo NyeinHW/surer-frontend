@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient,HttpHeaders} from '@angular/common/http'
 import {Router} from '@angular/router';
+import {baseUrl} from './../../environments/environment';
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -11,24 +13,39 @@ export class UserComponent implements OnInit {
   constructor(private http:HttpClient,private router: Router) { }
 
   ngOnInit() {
-     var userId=localStorage.getItem('userId');
-     console.warn("localstorage userid is",userId);
-     const headerDict = {
+      if(localStorage.getItem('token')==null){
+        window.alert("You have no access .Pls LogIn");
+        this.router.navigate(['/']); 
+      }
+     else{
+       this.onViewList();
+     }
+     
+  }
+  onViewList(){
+    const headerDict = {
       'Authorization':`Bearer ${localStorage.getItem('token')}`,
       'Access-Control-Allow-Origin': '*'
     }
     const requestOptions = {                                                                                                                                                                                 
       headers: new HttpHeaders(headerDict), 
     };
-
-    this.http.get(`https://localhost:44331/api/userapi/ViewUser?userId=${userId}`,requestOptions)
+     var userId=localStorage.getItem('userId');
+    this.http.get(`${baseUrl}/userapi/ViewUser?userId=${userId}`,requestOptions)
     .subscribe((data:any) => {
                     console.warn("user is",data);
                     this.user=data;
                 },
                 error => {
-                  console.warn("error here");
+                  window.alert("You have no access.Pls LogIn");
+                     this.router.navigate(['/']); 
                 });
+  }
+  getCarList(){
+    this.router.navigate(['/carpark']);
+  }
+  logOut(){
+    this.router.navigate(['/']);
   }
 
 }
