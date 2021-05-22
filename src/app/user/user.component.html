@@ -1,12 +1,21 @@
-<p>user works!</p>
-<table>
-<tr>
-<td>{{user.FirstName}}</td>
-</tr>
-<tr>
-<td>{{user.LastName}}</td>
-</tr>
-<tr>
-<td>{{user.Email}}</td>
-</tr>
-</table>
+<div class="userContainer card">
+<h2>Member Detail</h2>
+    <table>
+        <tr>
+            <td>FirstName:</td>
+            <td>{{user.FirstName}}</td>
+        </tr>
+        <tr>
+            <td>LastName:</td>
+            <td>{{user.LastName}}</td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td>{{user.Email}}</td>
+        </tr>
+        <tr>
+            <td><button (click)=getCarList()>View List</button></td>
+            <td><button (click)=logOut()>LogOut</button></td>
+        </tr>
+    </table>
+</div>

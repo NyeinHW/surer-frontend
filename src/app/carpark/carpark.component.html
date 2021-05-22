@@ -1,15 +1,29 @@
-<p>Welcome {{userName}}</p>
-<table style="width:100%">
-  <tr>
-    <th>Total Lots</th>
-    <th>CarPark Number</th>
-    <th>Lot Type</th>
-    <th>Lot Available</th>
-  </tr>
-  <tr *ngFor="let info of carInfo">
-    <td>{{info.carpark_info[0].total_lots}}</td>
-    <td>{{info.carpark_number}}</td>
-    <td>{{info.carpark_info[0].lot_type}}</td>
-    <td>{{info.carpark_info[0].lots_available}}</td>
-  </tr>
-</table>
+<div class="carparkContainer">
+  <div class="carparkHeader">
+    <h2>CarPark Available List</h2>
+    <div id="carparkBtn">
+      <button (click)="getUser()">View Profile</button>&nbsp;
+      <button (click)="logOut()">LogOut</button>
+    </div>
+  </div>
+  
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" id="table">
+    <thead>
+      <tr>
+        <th>CarPark Number</th>
+        <th>Total Lots</th>
+        <th>Lot Type</th>
+        <th>Lot Available</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let info of carInfo">
+      <td>{{info.carpark_number}}</td>
+      <td>{{info.carpark_info[0].total_lots}}</td>
+      <td>{{info.carpark_info[0].lot_type}}</td>
+      <td>{{info.carpark_info[0].lots_available}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+

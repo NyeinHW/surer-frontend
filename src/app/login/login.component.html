@@ -1,18 +1,28 @@
 <div class="loginContainer card">
-<h3>Login Form</h3>
+<h2>Login Form</h2>
   <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <table>
         <tr>
           <td>Email</td>
         </tr>
         <tr>
-          <td><input type="text" formControlName="email" required ></td>
+          <td>
+            <input type="text" formControlName="email"  [ngClass]="{ 'is-invalid': submitted && f.email.errors }" >
+            <div *ngIf="submitted && f.email.errors" class="errMsg">
+              <div *ngIf="f.email.errors.required">Email is required</div>
+            </div>
+          </td>
         </tr>
         <tr>
           <td>Password</td>
         </tr>
         <tr>
-          <td><input type="password" formControlName="password" required></td>
+          <td>
+            <input type="password" formControlName="password"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+            <div *ngIf="submitted && f.password.errors" class="errMsg">
+              <div *ngIf="f.password.errors.required">Password is required</div> 
+            </div>
+          </td>
         </tr>
         <tr>
           <td><input type="submit" value="Login"></td>
